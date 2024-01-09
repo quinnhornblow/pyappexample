@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "pyappexample"
+version = "0.1.0"
+description = ""
+authors = ["Vuizur <Vuizur@users.noreply.github.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+scipy = "^1.11.4"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
