@@ -3,6 +3,8 @@
 # The executable will execute this function when it starts
 $env:PYAPP_EXEC_SPEC="pyappexample.circle:run"
 
+$executable_name = "pyappexample"
+
 # We are building the wheel with poetry
 if (Test-Path -Path "./dist") {
     Remove-Item -Path ./dist -Recurse -Force
@@ -28,6 +30,6 @@ if (!(Test-Path -Path "./pyapp-latest")) {
 Set-Location -Path ./pyapp-latest
 cargo build --release
 # Move Item and rename it to $env:PYAPP_PROJECT_NAME.exe, overwrite if exists
-Move-Item target\release\pyapp.exe ..\$env:PYAPP_PROJECT_NAME.exe -Force
+Move-Item target\release\pyapp.exe ..\$executable_name.exe -Force
 # Change the current directory to the root of the project
 Set-Location -Path ..
