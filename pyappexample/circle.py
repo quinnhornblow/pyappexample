@@ -13,3 +13,15 @@ a = circle_area(r)
 
 # Print the result
 print(f"The area of a circle with radius {r} is {a:.2f}")
+
+def circle_circumference(radius):
+  # Use the pi constant from scipy
+  circumference = 2 * constants.pi * radius
+  return circumference
+
+# Test the function with a radius of 5
+
+c = circle_circumference(r)
+
+# Print the result
+print(f"The circumference of a circle with radius {r} is {c:.2f}")

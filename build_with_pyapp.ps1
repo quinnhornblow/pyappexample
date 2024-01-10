@@ -22,5 +22,7 @@ if (!(Test-Path -Path "./pyapp-latest")) {
 # Change the current directory to the extracted folder
 Set-Location -Path ./pyapp-latest
 cargo build --release
-# Move Item and rename it to $env:PYAPP_PROJECT_NAME.exe
-Move-Item target\release\pyapp.exe ..\$env:PYAPP_PROJECT_NAME.exe
+# Move Item and rename it to $env:PYAPP_PROJECT_NAME.exe, overwrite if exists
+Move-Item target\release\pyapp.exe ..\$env:PYAPP_PROJECT_NAME.exe -Force
+# Change the current directory to the root of the project
+Set-Location -Path ..
