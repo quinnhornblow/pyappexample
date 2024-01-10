@@ -1,13 +1,18 @@
 # This is supposed to be executed in the root of the project
 
-# Export poetry requirements to requirements.txt
-poetry export -f requirements.txt --output requirements.txt
-# Now set environment variables properly in powershell
-$env:PYAPP_PROJECT_VERSION="0.1.0"
-$env:PYAPP_PROJECT_NAME="pyappexample"
-# Set the path to the requirements.txt file, it is the absolute path of ./requirements.txt
-$env:PYAPP_PROJECT_DEPENDENCY_FILE="$((Get-Item -Path "./requirements.txt").FullName)"
-$env:PYAPP_EXEC_SCRIPT="$((Get-Item -Path "./pyappexample/circle.py").FullName)"
+# The executable will execute this function when it starts
+$env:PYAPP_EXEC_SPEC="pyappexample.circle:run"
+
+# We are building the wheel with poetry
+if (Test-Path -Path "./dist") {
+    Remove-Item -Path ./dist -Recurse -Force
+}
+poetry build
+# Get the full path of the wheel file in the dist directory
+$wheel_file = (Get-Item -Path "./dist/*.whl").FullName
+# Print wheel file path
+Write-Host "Wheel file path: $wheel_file"
+$env:PYAPP_PROJECT_PATH=$wheel_file
 
 # if check if pyapp-latest folder not exists
 if (!(Test-Path -Path "./pyapp-latest")) {

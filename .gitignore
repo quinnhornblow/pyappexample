@@ -1,3 +1,6 @@
 target/
 pyapp-latest/
 pyappexample.exe
+dist/
+pyappexample/__pycache__/
+pyappeexample.exe
