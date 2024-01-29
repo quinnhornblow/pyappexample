@@ -9,7 +9,7 @@ $executable_name = "pyappexample"
 if (Test-Path -Path "./dist") {
     Remove-Item -Path ./dist -Recurse -Force
 }
-poetry build
+python -m build
 # Get the full path of the wheel file in the dist directory
 $wheel_file = (Get-Item -Path "./dist/*.whl").FullName
 # Print wheel file path

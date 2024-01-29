@@ -1,14 +1,11 @@
-[tool.poetry]
+[build-system]
+requires = ["setuptools", "setuptools_scm[toml]"]
+build-backend = "setuptools.build_meta"
+
+[project]
 name = "pyappexample"
 version = "0.1.1"
 description = ""
-authors = ["Vuizur <Vuizur@users.noreply.github.com>"]
 readme = "README.md"
-
-[tool.poetry.dependencies]
-python = "^3.10"
-scipy = "^1.11.4"
-
-[build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
+requires-python = ">=3.10"
+dependencies = ["scipy>=1.11.4"]
